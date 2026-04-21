@@ -1,6 +1,7 @@
+import { useAuthStore } from './store/auth.store'
 export const api = async (url, options = {}) => {
-    const token = localStorage.getItem('token')
-    
+    const token = useAuthStore.getState().token
+
   const res = await fetch(`http://localhost:3000${url}`, {
     headers: {
       'Content-Type': 'application/json',
