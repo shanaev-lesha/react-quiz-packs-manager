@@ -1,15 +1,13 @@
-import { Routes, Route } from 'react-router-dom'
-import { LoginPage } from './pages/LoginPage'
-import { Dashboard } from './pages/Dashboard'
-import { ProtectedRoute } from './components/ProtectedRoute'
-import { RegisterPage } from './pages/RegisterPage'
+import { Routes, Route } from "react-router-dom";
+import { Dashboard } from "./pages/Dashboard";
+import { ProtectedRoute } from "./components/ProtectedRoute";
+import { AuthPage } from "./pages/AuthPage";
 
 export const AppRouter = () => {
   return (
     <Routes>
-      <Route path="/register" element={<RegisterPage />} />
-        
-      <Route path="/login" element={<LoginPage />} />
+      <Route path="/login" element={<AuthPage mode="login" />} />
+      <Route path="/register" element={<AuthPage mode="register" />} />
 
       <Route
         path="/"
@@ -20,7 +18,5 @@ export const AppRouter = () => {
         }
       />
     </Routes>
-
-    
-  )
-}
+  );
+};

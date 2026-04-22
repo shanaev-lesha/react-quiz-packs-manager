@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuthForm } from "../hooks/useAuthForm";
-import { register } from "../services/auth.service";
+import { login, register } from "../services/auth.service";
 import { useAuthStore } from "../store/auth.store";
+import { useAuthForm } from "../hooks/useAuthForm";
 
 import { Typography, Button, Box } from "@mui/material";
-
 import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
 
@@ -13,10 +12,12 @@ import { AuthLayout } from "../components/AuthLayout";
 import { AuthCard } from "../components/AuthCard";
 import { InputField } from "../components/ui/InputField";
 
-export const RegisterPage = () => {
+export const AuthPage = ({ mode }) => {
   const navigate = useNavigate();
-
   const loginStore = useAuthStore((state) => state.login);
+
+  const isLogin = mode === "login";
+
   const {
     email,
     password,
@@ -25,7 +26,8 @@ export const RegisterPage = () => {
     emailError,
     passwordError,
     validate,
-    resetErrors,
+    clearEmailError,
+    clearPasswordError,
   } = useAuthForm();
 
   const [serverError, setServerError] = useState(null);
@@ -38,13 +40,16 @@ export const RegisterPage = () => {
     setServerError(null);
 
     try {
-      const data = await register(email, password);
+      const data = isLogin
+        ? await login(email, password)
+        : await register(email, password);
 
       loginStore(data);
-
       navigate("/");
     } catch (err) {
-      setServerError(err?.message || "Ошибка регистрации");
+      setServerError(
+        err?.message || (isLogin ? "Ошибка входа" : "Ошибка регистрации"),
+      );
     }
   };
 
@@ -53,40 +58,26 @@ export const RegisterPage = () => {
       <AuthCard>
         <Typography
           variant="h4"
-          sx={{
-            textAlign: "center",
-            fontWeight: "bold",
-            mb: 1,
-          }}
+          sx={{ textAlign: "center", fontWeight: "bold", mb: 1 }}
         >
-          Register
+          {isLogin ? "Login" : "Register"}
         </Typography>
 
         <Typography
           variant="body2"
-          sx={{
-            textAlign: "center",
-            mb: 3,
-            color: "text.secondary",
-          }}
+          sx={{ textAlign: "center", mb: 3, color: "text.secondary" }}
         >
-          Create your account to get started
+          {isLogin ? "Welcome back" : "Create your account to get started"}
         </Typography>
 
         <form onSubmit={handleSubmit}>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              gap: 3,
-            }}
-          >
+          <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
             <InputField
               placeholder="Enter your email"
               value={email}
               onChange={(e) => {
                 setEmail(e.target.value);
-                resetErrors();
+                clearEmailError();
               }}
               error={emailError}
               icon={<EmailIcon sx={{ color: "#9c27b0" }} />}
@@ -98,7 +89,7 @@ export const RegisterPage = () => {
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value);
-                resetErrors();
+                clearPasswordError();
               }}
               error={passwordError}
               icon={<LockIcon sx={{ color: "#9c27b0" }} />}
@@ -119,7 +110,7 @@ export const RegisterPage = () => {
                 },
               }}
             >
-              REGISTER
+              {isLogin ? "LOGIN" : "REGISTER"}
             </Button>
           </Box>
         </form>
@@ -130,22 +121,13 @@ export const RegisterPage = () => {
           </Typography>
         )}
 
-        <Typography
-          variant="body2"
-          sx={{
-            textAlign: "center",
-            mt: 3,
-          }}
-        >
-          Already have an account?{" "}
+        <Typography variant="body2" sx={{ textAlign: "center", mt: 3 }}>
+          {isLogin ? "Don’t have an account?" : "Already have an account?"}{" "}
           <span
-            style={{
-              color: "#9c27b0",
-              cursor: "pointer",
-            }}
-            onClick={() => navigate("/login")}
+            style={{ color: "#9c27b0", cursor: "pointer" }}
+            onClick={() => navigate(isLogin ? "/register" : "/login")}
           >
-            Login
+            {isLogin ? "Register" : "Login"}
           </span>
         </Typography>
       </AuthCard>

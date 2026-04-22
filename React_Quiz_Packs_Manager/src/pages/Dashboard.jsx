@@ -1,3 +1,12 @@
+import { useAuthStore } from "../store/auth.store";
+
 export const Dashboard = () => {
-  return <h1>Protected page</h1>;
+  const logout = useAuthStore((s) => s.logout);
+
+  return (
+    <div>
+      <h1>Dashboard</h1>
+      <button onClick={logout}>Logout</button>
+    </div>
+  );
 };

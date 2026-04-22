@@ -7,7 +7,13 @@ export const api = async (url, options = {}) => {
     ...options,
   });
 
-  const data = await res.json();
+  let data;
+
+  try {
+    data = await res.json();
+  } catch {
+    data = {};
+  }
 
   if (!res.ok) {
     throw new Error(data.error || "API error");

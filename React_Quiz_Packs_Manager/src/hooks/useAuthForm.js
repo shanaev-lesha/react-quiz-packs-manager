@@ -18,10 +18,8 @@ export const useAuthForm = () => {
     return !emailErr && !passwordErr;
   };
 
-  const resetErrors = () => {
-    setEmailError(null);
-    setPasswordError(null);
-  };
+  const clearEmailError = () => setEmailError(null);
+  const clearPasswordError = () => setPasswordError(null);
 
   return {
     email,
@@ -31,6 +29,7 @@ export const useAuthForm = () => {
     emailError,
     passwordError,
     validate,
-    resetErrors,
+    clearEmailError,
+    clearPasswordError,
   };
 };
