@@ -1,21 +1,17 @@
-import { useAuthStore } from './store/auth.store'
 export const api = async (url, options = {}) => {
-    const token = useAuthStore.getState().token
-
   const res = await fetch(`http://localhost:3000${url}`, {
     headers: {
-      'Content-Type': 'application/json',
-      ...(token && { Authorization: `Bearer ${token}` }),
+      "Content-Type": "application/json",
       ...options.headers,
     },
     ...options,
-  })
+  });
 
-  const data = await res.json()
+  const data = await res.json();
 
   if (!res.ok) {
-    throw new Error(data.error || 'API error')
+    throw new Error(data.error || "API error");
   }
 
-  return data
-}
+  return data;
+};

@@ -1,27 +1,27 @@
-import { useState } from 'react'
-import { validateEmail, validatePassword } from '../utils/validation'
+import { useState } from "react";
+import { validateEmail, validatePassword } from "../utils/validation";
 
 export const useAuthForm = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const [emailError, setEmailError] = useState(null)
-  const [passwordError, setPasswordError] = useState(null)
+  const [emailError, setEmailError] = useState(null);
+  const [passwordError, setPasswordError] = useState(null);
 
   const validate = () => {
-    const emailErr = validateEmail(email)
-    const passwordErr = validatePassword(password)
+    const emailErr = validateEmail(email);
+    const passwordErr = validatePassword(password);
 
-    setEmailError(emailErr)
-    setPasswordError(passwordErr)
+    setEmailError(emailErr);
+    setPasswordError(passwordErr);
 
-    return !emailErr && !passwordErr
-  }
+    return !emailErr && !passwordErr;
+  };
 
   const resetErrors = () => {
-    setEmailError(null)
-    setPasswordError(null)
-  }
+    setEmailError(null);
+    setPasswordError(null);
+  };
 
   return {
     email,
@@ -32,5 +32,5 @@ export const useAuthForm = () => {
     passwordError,
     validate,
     resetErrors,
-  }
-}
+  };
+};
