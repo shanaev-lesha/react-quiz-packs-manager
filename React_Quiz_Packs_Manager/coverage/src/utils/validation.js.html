@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">10% </span>
+                <span class="strong">90% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>2/20</span>
+                <span class='fraction'>18/20</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">87.5% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/16</span>
+                <span class='fraction'>14/16</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">11.11% </span>
+                <span class="strong">88.88% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2/18</span>
+                <span class='fraction'>16/18</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -97,74 +97,74 @@
 <a name='L32'></a><a href='#L32'>32</a>
 <a name='L33'></a><a href='#L33'>33</a>
 <a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<a name='L35'></a><a href='#L35'>35</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const <span class="fstat-no" title="function not covered" >validateEmail = (e</span>mail) =&gt; {
-<span class="cstat-no" title="statement not covered" >  if (!email) <span class="cstat-no" title="statement not covered" >return 'Email обязателен'</span></span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const validateEmail = (email) =&gt; {
+  if (!email) return 'Email обязателен'
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {</span>
-<span class="cstat-no" title="statement not covered" >    return 'Некорректный email'</span>
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return 'Некорректный email'
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return null</span>
+  return null
 }
 &nbsp;
-export const <span class="fstat-no" title="function not covered" >validatePassword = (p</span>assword) =&gt; {
-<span class="cstat-no" title="statement not covered" >  if (!password) <span class="cstat-no" title="statement not covered" >return 'Пароль обязателен'</span></span>
+export const validatePassword = (password) =&gt; {
+  if (!password) return 'Пароль обязателен'
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (password.length &lt; 4) {</span>
-<span class="cstat-no" title="statement not covered" >    return 'Минимум 4 символа'</span>
+  if (password.length &lt; 4) {
+    return 'Минимум 4 символа'
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (password.length &gt; 64) {</span>
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (password.length &gt; 64) {
 <span class="cstat-no" title="statement not covered" >    return 'Максимум 64 символа'</span>
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (/\s/.test(password)) {</span>
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (/\s/.test(password)) {
 <span class="cstat-no" title="statement not covered" >    return 'Пароль не должен содержать пробелы'</span>
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (!/[a-zA-Z]/.test(password)) {</span>
-<span class="cstat-no" title="statement not covered" >    return 'Должна быть хотя бы одна буква'</span>
+  if (!/[a-zA-Z]/.test(password)) {
+    return 'Должна быть хотя бы одна буква'
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (!/\d/.test(password)) {</span>
-<span class="cstat-no" title="statement not covered" >    return 'Должна быть хотя бы одна цифра'</span>
+  if (!/\d/.test(password)) {
+    return 'Должна быть хотя бы одна цифра'
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return null</span>
+  return null
 }</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -172,7 +172,7 @@ export const <span class="fstat-no" title="function not covered" >validatePasswo
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-04-23T20:51:12.052Z
+                at 2026-04-24T17:58:22.472Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
