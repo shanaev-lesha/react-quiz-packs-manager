@@ -6,7 +6,7 @@ import { CreatureCanvas } from "../components/CreatureCanvas";
 export const Dashboard = () => {
   const logout = useAuthStore((s) => s.logout);
 
-  const [enabled, setEnabled] = useState(true);
+  const [enabled, setEnabled] = useState(false);
 
   return (
     <div>
