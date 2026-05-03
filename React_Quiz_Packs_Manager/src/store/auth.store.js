@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { getMe } from "../services/auth.service";
+import { getMe } from "../api/authApi";
 
 export const useAuthStore = create((set) => ({
   user: null,
@@ -17,7 +17,7 @@ export const useAuthStore = create((set) => ({
     set({ token });
 
     try {
-      const data = await getMe();
+      const data = await getMe(token);
 
       set({
         user: data.user,

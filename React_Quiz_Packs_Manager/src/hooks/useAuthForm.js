@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { validateEmail, validatePassword } from "../utils/validation";
+import { validateEmail, validatePassword } from "../shared/lib/validation";
 
 export const useAuthForm = () => {
   const [email, setEmail] = useState("");

@@ -1,9 +1,6 @@
-import { api } from "../api";
-import { useAuthStore } from "../store/auth.store";
+import { api } from "../shared/api";
 
-export const getMe = () => {
-  const token = useAuthStore.getState().token;
-
+export const getMe = (token) => {
   return api("/auth/me", {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -17,9 +14,8 @@ export const login = (email, password) =>
     body: JSON.stringify({ email, password }),
   });
 
-export const register = (email, password) => {
-  return api("/auth/register", {
+export const register = (email, password) =>
+  api("/auth/register", {
     method: "POST",
     body: JSON.stringify({ email, password }),
   });
-};

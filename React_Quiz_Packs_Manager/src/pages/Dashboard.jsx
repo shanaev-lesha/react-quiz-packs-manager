@@ -1,45 +1,19 @@
-import { useState } from "react";
 import { useAuthStore } from "../store/auth.store";
 import { Button } from "@mui/material";
-import { CreatureCanvas } from "../components/CreatureCanvas";
+import { SnakeToggle } from "../components/SnakeToggle";
+import { buttonStyle } from "../components/ui/buttonStyle.js";
+import { Box } from "@mui/material";
 
 export const Dashboard = () => {
   const logout = useAuthStore((s) => s.logout);
 
-  const [enabled, setEnabled] = useState(false);
-
   return (
-    <div>
-      {enabled && <CreatureCanvas />}
+    <Box sx={{ display: "flex", gap: "2mm" }}>
+      <SnakeToggle />
 
-      <Button
-        onClick={() => setEnabled((prev) => !prev)}
-        variant="contained"
-        sx={{
-          mt: 2,
-          mr: 1,
-          py: 1.3,
-          borderRadius: 2,
-          fontWeight: "bold",
-          background: "linear-gradient(90deg, #9c27b0, #ba68c8)",
-        }}
-      >
-        {enabled ? "snake off" : "snake on"}
-      </Button>
-
-      <Button
-        onClick={logout}
-        variant="contained"
-        sx={{
-          mt: 2,
-          py: 1.3,
-          borderRadius: 2,
-          fontWeight: "bold",
-          background: "linear-gradient(90deg, #9c27b0, #ba68c8)",
-        }}
-      >
+      <Button onClick={logout} variant="contained" sx={buttonStyle}>
         Logout
       </Button>
-    </div>
+    </Box>
   );
 };

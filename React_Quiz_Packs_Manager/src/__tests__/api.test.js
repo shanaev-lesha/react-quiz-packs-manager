@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { api } from "../api";
+import { api } from "../shared/api";
 
 describe("api", () => {
   it("returns data on success", async () => {

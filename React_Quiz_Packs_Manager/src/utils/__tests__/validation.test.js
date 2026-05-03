@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { validateEmail, validatePassword } from "../validation";
+import { validateEmail, validatePassword } from "../../shared/lib/validation";
 
 describe("validateEmail", () => {
   it("returns error if empty", () => {
