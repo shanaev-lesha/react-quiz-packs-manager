@@ -8,9 +8,18 @@ export const useAuthForm = () => {
   const [emailError, setEmailError] = useState(null);
   const [passwordError, setPasswordError] = useState(null);
 
-  const validate = () => {
+  const validate = (mode) => {
     const emailErr = validateEmail(email);
-    const passwordErr = validatePassword(password);
+
+    let passwordErr = null;
+
+    if (mode === "register") {
+      passwordErr = validatePassword(password);
+    } else {
+      if (!password) {
+        passwordErr = "Пароль обязателен";
+      }
+    }
 
     setEmailError(emailErr);
     setPasswordError(passwordErr);

@@ -30,7 +30,9 @@ export const AuthPage = ({ mode }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!validate()) return;
+    setServerError(null);
+
+    if (!validate(mode)) return;
 
     try {
       const data = isLogin
@@ -40,7 +42,11 @@ export const AuthPage = ({ mode }) => {
       loginStore(data);
       navigate("/");
     } catch (err) {
-      setServerError(err.message);
+      if (isLogin) {
+        setServerError("Неверный Email или пароль");
+      } else {
+        setServerError(err.message);
+      }
     }
   };
 
@@ -57,6 +63,7 @@ export const AuthPage = ({ mode }) => {
       clearPasswordError={clearPasswordError}
       onSubmit={handleSubmit}
       serverError={serverError}
+      clearServerError={() => setServerError(null)}
       onSwitchMode={() => navigate(isLogin ? "/register" : "/login")}
     />
   );

@@ -19,6 +19,7 @@ export const AuthForm = ({
   clearPasswordError,
   onSubmit,
   serverError,
+  clearServerError,
   onSwitchMode,
 }) => {
   return (
@@ -55,6 +56,7 @@ export const AuthForm = ({
               onChange={(e) => {
                 setPassword(e.target.value);
                 clearPasswordError();
+                clearServerError();
               }}
               error={passwordError}
               icon={<LockIcon />}
@@ -66,7 +68,7 @@ export const AuthForm = ({
           </Box>
         </form>
 
-        {serverError && (
+        {serverError && !emailError && !passwordError && (
           <Typography sx={{ mt: 2 }} color="error">
             {serverError}
           </Typography>
